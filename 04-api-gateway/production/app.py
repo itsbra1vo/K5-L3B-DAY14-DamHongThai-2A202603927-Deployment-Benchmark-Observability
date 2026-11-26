@@ -142,7 +142,12 @@ async def ask_agent(
     rate_info = limiter.check(username)
 
     # ✅ Cost check trước khi gọi LLM
-    cost_guard.check_budget(username)
+    # Reserve a conservative estimate before spending on the LLM. The mock
+    # response is short, but real providers can return up to this output cap.
+    estimated_input_tokens = len(body.question.split()) * 2
+    estimated_output_tokens = 256
+    estimated_cost = cost_guard.estimate_cost(estimated_input_tokens, estimated_output_tokens)
+    cost_guard.check_budget(username, estimated_cost)
 
     # Gọi LLM (mock)
     response_text = ask(body.question)
@@ -157,7 +162,7 @@ async def ask_agent(
         "answer": response_text,
         "usage": {
             "requests_remaining": rate_info["remaining"],
-            "budget_remaining_usd": usage.total_cost_usd,
+            "budget_remaining_usd": max(0, cost_guard.monthly_budget_usd - usage.total_cost_usd),
         },
     }
 

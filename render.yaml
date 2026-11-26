@@ -1,0 +1,32 @@
+services:
+  - type: keyvalue
+    name: benchmark-agent-redis
+    plan: free
+    region: singapore
+    ipAllowList: []
+    maxmemoryPolicy: noeviction
+
+  - type: web
+    name: benchmark-agent
+    runtime: docker
+    plan: free
+    region: singapore
+    rootDir: 06-lab-complete
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    maxShutdownDelaySeconds: 10
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "10"
+      - key: MONTHLY_BUDGET_USD
+        value: "10"
+      - key: AGENT_API_KEY
+        generateValue: true
+      - key: REDIS_URL
+        fromService:
+          name: benchmark-agent-redis
+          type: keyvalue
+          property: connectionString

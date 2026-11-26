@@ -1,0 +1,1603 @@
+﻿{
+    "generated_at":  "2026-11-26 Asia/Saigon",
+    "host":  "Windows 11, Python 3.11, local development server; Docker Compose production stack",
+    "methodology":  "load_test.py with warm-up excluded; random upstream error default 1%; slow-rate comparison 0%, 3%, 10%; eval golden dataset 23 cases",
+    "slo":  {
+                "p95_ms":  500,
+                "error_rate":  0.02,
+                "quality_accuracy":  0.85
+            },
+    "load_tests":  {
+                       "load_c1":  {
+                                       "target":  "http://localhost:8000",
+                                       "concurrency":  1,
+                                       "total_requests":  300,
+                                       "duration_s":  74.66,
+                                       "rps":  4.02,
+                                       "error_rate":  0.0167,
+                                       "status_codes":  {
+                                                            "200":  295,
+                                                            "503":  5
+                                                        },
+                                       "latency_ms":  {
+                                                          "min":  153.0,
+                                                          "avg":  248.4,
+                                                          "p50":  202.6,
+                                                          "p90":  231.4,
+                                                          "p95":  234.7,
+                                                          "p99":  1724.4,
+                                                          "max":  1745.4
+                                                      },
+                                       "total_cost_usd":  0.010213,
+                                       "slo":  {
+                                                   "p95_ms":  500,
+                                                   "error_rate":  0.02,
+                                                   "passed":  true
+                                               }
+                                   },
+                       "load_c10":  {
+                                        "target":  "http://localhost:8000",
+                                        "concurrency":  10,
+                                        "total_requests":  100,
+                                        "duration_s":  2.21,
+                                        "rps":  45.26,
+                                        "error_rate":  0.02,
+                                        "status_codes":  {
+                                                             "200":  98,
+                                                             "503":  2
+                                                         },
+                                        "latency_ms":  {
+                                                           "min":  122.1,
+                                                           "avg":  217.5,
+                                                           "p50":  200.6,
+                                                           "p90":  236.4,
+                                                           "p95":  454.3,
+                                                           "p99":  461.4,
+                                                           "max":  461.7
+                                                       },
+                                        "total_cost_usd":  0.003335,
+                                        "slo":  {
+                                                    "p95_ms":  500,
+                                                    "error_rate":  0.02,
+                                                    "passed":  true
+                                                }
+                                    },
+                       "load_c50":  {
+                                        "target":  "http://localhost:8000",
+                                        "concurrency":  50,
+                                        "total_requests":  100,
+                                        "duration_s":  2.47,
+                                        "rps":  40.49,
+                                        "error_rate":  0.01,
+                                        "status_codes":  {
+                                                             "200":  99,
+                                                             "503":  1
+                                                         },
+                                        "latency_ms":  {
+                                                           "min":  169.4,
+                                                           "avg":  540.6,
+                                                           "p50":  462.6,
+                                                           "p90":  606.6,
+                                                           "p95":  1896.1,
+                                                           "p99":  1983.4,
+                                                           "max":  1987.2
+                                                       },
+                                        "total_cost_usd":  0.003505,
+                                        "slo":  {
+                                                    "p95_ms":  500,
+                                                    "error_rate":  0.02,
+                                                    "passed":  false
+                                                }
+                                    },
+                       "load_c100":  {
+                                         "target":  "http://localhost:8000",
+                                         "concurrency":  100,
+                                         "total_requests":  100,
+                                         "duration_s":  2.08,
+                                         "rps":  48.13,
+                                         "error_rate":  0.02,
+                                         "status_codes":  {
+                                                              "200":  98,
+                                                              "503":  2
+                                                          },
+                                         "latency_ms":  {
+                                                            "min":  215.6,
+                                                            "avg":  697.4,
+                                                            "p50":  662.5,
+                                                            "p90":  797.5,
+                                                            "p95":  808.2,
+                                                            "p99":  2058.5,
+                                                            "max":  2061.5
+                                                        },
+                                         "total_cost_usd":  0.003334,
+                                         "slo":  {
+                                                     "p95_ms":  500,
+                                                     "error_rate":  0.02,
+                                                     "passed":  false
+                                                 }
+                                     },
+                       "slow_0":  {
+                                      "target":  "http://localhost:8001",
+                                      "concurrency":  20,
+                                      "total_requests":  100,
+                                      "duration_s":  1.29,
+                                      "rps":  77.22,
+                                      "error_rate":  0.02,
+                                      "status_codes":  {
+                                                           "200":  98,
+                                                           "503":  2
+                                                       },
+                                      "latency_ms":  {
+                                                         "min":  136.6,
+                                                         "avg":  238.9,
+                                                         "p50":  200.5,
+                                                         "p90":  438.3,
+                                                         "p95":  478.9,
+                                                         "p99":  480.6,
+                                                         "max":  483.8
+                                                     },
+                                      "total_cost_usd":  0.003339,
+                                      "slo":  {
+                                                  "p95_ms":  500,
+                                                  "error_rate":  0.02,
+                                                  "passed":  true
+                                              }
+                                  },
+                       "slow_003":  {
+                                        "target":  "http://localhost:8000",
+                                        "concurrency":  20,
+                                        "total_requests":  100,
+                                        "duration_s":  2.12,
+                                        "rps":  47.08,
+                                        "error_rate":  0.0,
+                                        "status_codes":  {
+                                                             "200":  100
+                                                         },
+                                        "latency_ms":  {
+                                                           "min":  136.5,
+                                                           "avg":  291.7,
+                                                           "p50":  206.9,
+                                                           "p90":  463.8,
+                                                           "p95":  474.3,
+                                                           "p99":  1721.4,
+                                                           "max":  1950.1
+                                                       },
+                                        "total_cost_usd":  0.003449,
+                                        "slo":  {
+                                                    "p95_ms":  500,
+                                                    "error_rate":  0.02,
+                                                    "passed":  true
+                                                }
+                                    },
+                       "slow_01":  {
+                                       "target":  "http://localhost:8002",
+                                       "concurrency":  20,
+                                       "total_requests":  100,
+                                       "duration_s":  2.85,
+                                       "rps":  35.03,
+                                       "error_rate":  0.02,
+                                       "status_codes":  {
+                                                            "200":  98,
+                                                            "503":  2
+                                                        },
+                                       "latency_ms":  {
+                                                          "min":  139.2,
+                                                          "avg":  339.9,
+                                                          "p50":  214.9,
+                                                          "p90":  479.9,
+                                                          "p95":  1683.4,
+                                                          "p99":  1952.8,
+                                                          "max":  1953.0
+                                                      },
+                                       "total_cost_usd":  0.003348,
+                                       "slo":  {
+                                                   "p95_ms":  500,
+                                                   "error_rate":  0.02,
+                                                   "passed":  false
+                                               }
+                                   },
+                       "alert_load":  {
+                                          "target":  "http://localhost:8080",
+                                          "concurrency":  20,
+                                          "total_requests":  1864,
+                                          "duration_s":  61.22,
+                                          "rps":  30.45,
+                                          "error_rate":  0.0011,
+                                          "status_codes":  {
+                                                               "200":  1862,
+                                                               "504":  2
+                                                           },
+                                          "latency_ms":  {
+                                                             "min":  154.9,
+                                                             "avg":  637.7,
+                                                             "p50":  204.7,
+                                                             "p90":  1699.9,
+                                                             "p95":  1711.2,
+                                                             "p99":  1722.3,
+                                                             "max":  1785.4
+                                                         },
+                                          "total_cost_usd":  0.063007,
+                                          "slo":  {
+                                                      "p95_ms":  500,
+                                                      "error_rate":  0.02,
+                                                      "passed":  false
+                                                  }
+                                      }
+                   },
+    "evals":  {
+                  "eval_v1":  {
+                                  "target":  "http://localhost:8003",
+                                  "agent_version":  "v1",
+                                  "dataset":  "C:\\Users\\Acer\\Downloads\\K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability\\06-lab-complete\\benchmark-observability\\develop\\eval\\golden_dataset.jsonl",
+                                  "total":  23,
+                                  "passed":  1,
+                                  "accuracy":  0.0435,
+                                  "avg_score":  0.0578,
+                                  "errors":  0,
+                                  "latency_ms":  {
+                                                     "p50":  156.1,
+                                                     "p95":  201.2
+                                                 },
+                                  "total_cost_usd":  0.000404,
+                                  "avg_tokens":  57.1,
+                                  "cost_per_correct_usd":  0.00040395,
+                                  "by_category":  {
+                                                      "benchmark":  {
+                                                                        "total":  3,
+                                                                        "passed":  0,
+                                                                        "accuracy":  0.0
+                                                                    },
+                                                      "cost":  {
+                                                                   "total":  1,
+                                                                   "passed":  0,
+                                                                   "accuracy":  0.0
+                                                               },
+                                                      "deployment":  {
+                                                                         "total":  3,
+                                                                         "passed":  1,
+                                                                         "accuracy":  0.33
+                                                                     },
+                                                      "docker":  {
+                                                                     "total":  2,
+                                                                     "passed":  0,
+                                                                     "accuracy":  0.0
+                                                                 },
+                                                      "observability":  {
+                                                                            "total":  6,
+                                                                            "passed":  0,
+                                                                            "accuracy":  0.0
+                                                                        },
+                                                      "reliability":  {
+                                                                          "total":  3,
+                                                                          "passed":  0,
+                                                                          "accuracy":  0.0
+                                                                      },
+                                                      "scaling":  {
+                                                                      "total":  3,
+                                                                      "passed":  0,
+                                                                      "accuracy":  0.0
+                                                                  },
+                                                      "security":  {
+                                                                       "total":  2,
+                                                                       "passed":  0,
+                                                                       "accuracy":  0.0
+                                                                   }
+                                                  },
+                                  "results":  [
+                                                  {
+                                                      "id":  "basic-01",
+                                                      "category":  "deployment",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  2257.1,
+                                                      "cost_usd":  1.59E-05,
+                                                      "tokens":  49,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "Deployment lÃ  quÃ¡ trÃ¬nh Ä‘Æ°a code tá»« mÃ¡y báº¡n lÃªn server Ä‘á»ƒ ngÆ°á»i khÃ¡c dÃ¹ng Ä‘Æ°á»£c."
+                                                  },
+                                                  {
+                                                      "id":  "docker-01",
+                                                      "category":  "docker",
+                                                      "passed":  false,
+                                                      "score":  0.33,
+                                                      "missing_keywords":  [
+                                                                               "dependencies",
+                                                                               "mÃ´i trÆ°á»ng"
+                                                                           ],
+                                                      "latency_ms":  184.1,
+                                                      "cost_usd":  1.65E-05,
+                                                      "tokens":  56,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "Container lÃ  cÃ¡ch Ä‘Ã³ng gÃ³i app Ä‘á»ƒ cháº¡y á»Ÿ má»i nÆ¡i. Build once, run anywhere!"
+                                                  },
+                                                  {
+                                                      "id":  "docker-02",
+                                                      "category":  "docker",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "builder",
+                                                                               "runtime",
+                                                                               "nhá» hÆ¡n"
+                                                                           ],
+                                                      "latency_ms":  201.2,
+                                                      "cost_usd":  1.65E-05,
+                                                      "tokens":  56,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "Container lÃ  cÃ¡ch Ä‘Ã³ng gÃ³i app Ä‘á»ƒ cháº¡y á»Ÿ má»i nÆ¡i. Build once, run anywhere!"
+                                                  },
+                                                  {
+                                                      "id":  "probe-01",
+                                                      "category":  "reliability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "cÃ²n sá»‘ng",
+                                                                               "restart"
+                                                                           ],
+                                                      "latency_ms":  201.2,
+                                                      "cost_usd":  1.695E-05,
+                                                      "tokens":  53,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "CÃ¢u há»i hay! Äiá»u nÃ y phá»¥ thuá»™c vÃ o kiáº¿n trÃºc há»‡ thá»‘ng vÃ  yÃªu cáº§u cá»¥ thá»ƒ cá»§a báº¡n."
+                                                  },
+                                                  {
+                                                      "id":  "probe-02",
+                                                      "category":  "reliability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "load balancer",
+                                                                               "traffic",
+                                                                               "khÃ´ng restart"
+                                                                           ],
+                                                      "latency_ms":  155.6,
+                                                      "cost_usd":  1.74E-05,
+                                                      "tokens":  56,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "CÃ¢u há»i hay! Äiá»u nÃ y phá»¥ thuá»™c vÃ o kiáº¿n trÃºc há»‡ thá»‘ng vÃ  yÃªu cáº§u cá»¥ thá»ƒ cá»§a báº¡n."
+                                                  },
+                                                  {
+                                                      "id":  "reliability-01",
+                                                      "category":  "reliability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "sigterm",
+                                                                               "in-flight",
+                                                                               "request má»›i"
+                                                                           ],
+                                                      "latency_ms":  155.4,
+                                                      "cost_usd":  1.755E-05,
+                                                      "tokens":  57,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "CÃ¢u há»i hay! Äiá»u nÃ y phá»¥ thuá»™c vÃ o kiáº¿n trÃºc há»‡ thá»‘ng vÃ  yÃªu cáº§u cá»¥ thá»ƒ cá»§a báº¡n."
+                                                  },
+                                                  {
+                                                      "id":  "config-01",
+                                                      "category":  "deployment",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "biáº¿n mÃ´i trÆ°á»ng",
+                                                                               "hardcode"
+                                                                           ],
+                                                      "latency_ms":  155.3,
+                                                      "cost_usd":  1.755E-05,
+                                                      "tokens":  57,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "CÃ¢u há»i hay! Äiá»u nÃ y phá»¥ thuá»™c vÃ o kiáº¿n trÃºc há»‡ thá»‘ng vÃ  yÃªu cáº§u cá»¥ thá»ƒ cá»§a báº¡n."
+                                                  },
+                                                  {
+                                                      "id":  "security-01",
+                                                      "category":  "security",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "429",
+                                                                               "retry-after"
+                                                                           ],
+                                                      "latency_ms":  169.8,
+                                                      "cost_usd":  2.025E-05,
+                                                      "tokens":  63,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "ÄÃ¢y lÃ  cÃ¢u tráº£ lá»i tá»« AI agent (mock). Trong production, Ä‘Ã¢y sáº½ lÃ  response tá»« OpenAI/Anthropic."
+                                                  },
+                                                  {
+                                                      "id":  "security-02",
+                                                      "category":  "security",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "token",
+                                                                               "háº¿t háº¡n",
+                                                                               "chá»¯ kÃ½"
+                                                                           ],
+                                                      "latency_ms":  186.2,
+                                                      "cost_usd":  1.53E-05,
+                                                      "tokens":  51,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "TÃ´i lÃ  AI agent Ä‘Æ°á»£c deploy lÃªn cloud. CÃ¢u há»i cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c nháº­n."
+                                                  },
+                                                  {
+                                                      "id":  "scaling-01",
+                                                      "category":  "scaling",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "redis",
+                                                                               "session",
+                                                                               "load balancer"
+                                                                           ],
+                                                      "latency_ms":  185.3,
+                                                      "cost_usd":  1.98E-05,
+                                                      "tokens":  60,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "ÄÃ¢y lÃ  cÃ¢u tráº£ lá»i tá»« AI agent (mock). Trong production, Ä‘Ã¢y sáº½ lÃ  response tá»« OpenAI/Anthropic."
+                                                  },
+                                                  {
+                                                      "id":  "scaling-02",
+                                                      "category":  "scaling",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "round-robin",
+                                                                               "instance"
+                                                                           ],
+                                                      "latency_ms":  156.1,
+                                                      "cost_usd":  2.025E-05,
+                                                      "tokens":  63,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "ÄÃ¢y lÃ  cÃ¢u tráº£ lá»i tá»« AI agent (mock). Trong production, Ä‘Ã¢y sáº½ lÃ  response tá»« OpenAI/Anthropic."
+                                                  },
+                                                  {
+                                                      "id":  "scaling-03",
+                                                      "category":  "scaling",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "cpu",
+                                                                               "memory",
+                                                                               "custom metrics"
+                                                                           ],
+                                                      "latency_ms":  172.2,
+                                                      "cost_usd":  1.575E-05,
+                                                      "tokens":  54,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "TÃ´i lÃ  AI agent Ä‘Æ°á»£c deploy lÃªn cloud. CÃ¢u há»i cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c nháº­n."
+                                                  },
+                                                  {
+                                                      "id":  "bench-01",
+                                                      "category":  "benchmark",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "95%",
+                                                                               "tail latency",
+                                                                               "p99"
+                                                                           ],
+                                                      "latency_ms":  156.1,
+                                                      "cost_usd":  1.59E-05,
+                                                      "tokens":  55,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "TÃ´i lÃ  AI agent Ä‘Æ°á»£c deploy lÃªn cloud. CÃ¢u há»i cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c nháº­n."
+                                                  },
+                                                  {
+                                                      "id":  "bench-02",
+                                                      "category":  "benchmark",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "Ä‘Ã¡p Ã¡n",
+                                                                               "regression"
+                                                                           ],
+                                                      "latency_ms":  140.1,
+                                                      "cost_usd":  1.695E-05,
+                                                      "tokens":  56,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "Deployment lÃ  quÃ¡ trÃ¬nh Ä‘Æ°a code tá»« mÃ¡y báº¡n lÃªn server Ä‘á»ƒ ngÆ°á»i khÃ¡c dÃ¹ng Ä‘Æ°á»£c."
+                                                  },
+                                                  {
+                                                      "id":  "obs-01",
+                                                      "category":  "observability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "pull",
+                                                                               "scrape",
+                                                                               "/metrics"
+                                                                           ],
+                                                      "latency_ms":  140.4,
+                                                      "cost_usd":  1.605E-05,
+                                                      "tokens":  56,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "TÃ´i lÃ  AI agent Ä‘Æ°á»£c deploy lÃªn cloud. CÃ¢u há»i cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c nháº­n."
+                                                  },
+                                                  {
+                                                      "id":  "obs-02",
+                                                      "category":  "observability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "chá»‰ tÄƒng",
+                                                                               "lÃªn xuá»‘ng",
+                                                                               "bucket"
+                                                                           ],
+                                                      "latency_ms":  155.9,
+                                                      "cost_usd":  1.815E-05,
+                                                      "tokens":  61,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "CÃ¢u há»i hay! Äiá»u nÃ y phá»¥ thuá»™c vÃ o kiáº¿n trÃºc há»‡ thá»‘ng vÃ  yÃªu cáº§u cá»¥ thá»ƒ cá»§a báº¡n."
+                                                  },
+                                                  {
+                                                      "id":  "obs-03",
+                                                      "category":  "observability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "time series",
+                                                                               "ram"
+                                                                           ],
+                                                      "latency_ms":  168.7,
+                                                      "cost_usd":  1.665E-05,
+                                                      "tokens":  60,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "TÃ´i lÃ  AI agent Ä‘Æ°á»£c deploy lÃªn cloud. CÃ¢u há»i cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c nháº­n."
+                                                  },
+                                                  {
+                                                      "id":  "obs-04",
+                                                      "category":  "observability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "span",
+                                                                               "attributes",
+                                                                               "thá»i gian"
+                                                                           ],
+                                                      "latency_ms":  154.7,
+                                                      "cost_usd":  1.965E-05,
+                                                      "tokens":  59,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "ÄÃ¢y lÃ  cÃ¢u tráº£ lá»i tá»« AI agent (mock). Trong production, Ä‘Ã¢y sáº½ lÃ  response tá»« OpenAI/Anthropic."
+                                                  },
+                                                  {
+                                                      "id":  "obs-05",
+                                                      "category":  "observability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "trace",
+                                                                               "jaeger"
+                                                                           ],
+                                                      "latency_ms":  153.9,
+                                                      "cost_usd":  2.04E-05,
+                                                      "tokens":  64,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "ÄÃ¢y lÃ  cÃ¢u tráº£ lá»i tá»« AI agent (mock). Trong production, Ä‘Ã¢y sáº½ lÃ  response tá»« OpenAI/Anthropic."
+                                                  },
+                                                  {
+                                                      "id":  "obs-06",
+                                                      "category":  "observability",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "request_id",
+                                                                               "trace_id",
+                                                                               "lá»c"
+                                                                           ],
+                                                      "latency_ms":  169.0,
+                                                      "cost_usd":  1.59E-05,
+                                                      "tokens":  55,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "TÃ´i lÃ  AI agent Ä‘Æ°á»£c deploy lÃªn cloud. CÃ¢u há»i cá»§a báº¡n Ä‘Ã£ Ä‘Æ°á»£c nháº­n."
+                                                  },
+                                                  {
+                                                      "id":  "slo-01",
+                                                      "category":  "benchmark",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "sli",
+                                                                               "100%"
+                                                                           ],
+                                                      "latency_ms":  137.8,
+                                                      "cost_usd":  1.98E-05,
+                                                      "tokens":  60,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "ÄÃ¢y lÃ  cÃ¢u tráº£ lá»i tá»« AI agent (mock). Trong production, Ä‘Ã¢y sáº½ lÃ  response tá»« OpenAI/Anthropic."
+                                                  },
+                                                  {
+                                                      "id":  "cost-01",
+                                                      "category":  "cost",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "token",
+                                                                               "input",
+                                                                               "output"
+                                                                           ],
+                                                      "latency_ms":  172.6,
+                                                      "cost_usd":  1.755E-05,
+                                                      "tokens":  57,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "CÃ¢u há»i hay! Äiá»u nÃ y phá»¥ thuá»™c vÃ o kiáº¿n trÃºc há»‡ thá»‘ng vÃ  yÃªu cáº§u cá»¥ thá»ƒ cá»§a báº¡n."
+                                                  },
+                                                  {
+                                                      "id":  "cloud-01",
+                                                      "category":  "deployment",
+                                                      "passed":  false,
+                                                      "score":  0.0,
+                                                      "missing_keywords":  [
+                                                                               "container",
+                                                                               "tá»± scale",
+                                                                               "https"
+                                                                           ],
+                                                      "latency_ms":  154.1,
+                                                      "cost_usd":  1.725E-05,
+                                                      "tokens":  55,
+                                                      "agent_version":  "v1",
+                                                      "answer":  "CÃ¢u há»i hay! Äiá»u nÃ y phá»¥ thuá»™c vÃ o kiáº¿n trÃºc há»‡ thá»‘ng vÃ  yÃªu cáº§u cá»¥ thá»ƒ cá»§a báº¡n."
+                                                  }
+                                              ],
+                                  "quality_gate":  {
+                                                       "min_accuracy":  0.85,
+                                                       "regressions":  [
+
+                                                                       ],
+                                                       "passed":  false
+                                                   }
+                              },
+                  "eval_v2_initial":  {
+                                          "target":  "http://localhost:8000",
+                                          "agent_version":  "v2",
+                                          "dataset":  "C:\\Users\\Acer\\Downloads\\K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability\\06-lab-complete\\benchmark-observability\\develop\\eval\\golden_dataset.jsonl",
+                                          "total":  23,
+                                          "passed":  21,
+                                          "accuracy":  0.913,
+                                          "avg_score":  0.913,
+                                          "errors":  0,
+                                          "latency_ms":  {
+                                                             "p50":  203.8,
+                                                             "p95":  1560.9
+                                                         },
+                                          "total_cost_usd":  0.000762,
+                                          "avg_tokens":  109.1,
+                                          "cost_per_correct_usd":  3.627E-05,
+                                          "by_category":  {
+                                                              "benchmark":  {
+                                                                                "total":  3,
+                                                                                "passed":  3,
+                                                                                "accuracy":  1.0
+                                                                            },
+                                                              "cost":  {
+                                                                           "total":  1,
+                                                                           "passed":  1,
+                                                                           "accuracy":  1.0
+                                                                       },
+                                                              "deployment":  {
+                                                                                 "total":  3,
+                                                                                 "passed":  3,
+                                                                                 "accuracy":  1.0
+                                                                             },
+                                                              "docker":  {
+                                                                             "total":  2,
+                                                                             "passed":  2,
+                                                                             "accuracy":  1.0
+                                                                         },
+                                                              "observability":  {
+                                                                                    "total":  6,
+                                                                                    "passed":  6,
+                                                                                    "accuracy":  1.0
+                                                                                },
+                                                              "reliability":  {
+                                                                                  "total":  3,
+                                                                                  "passed":  3,
+                                                                                  "accuracy":  1.0
+                                                                              },
+                                                              "scaling":  {
+                                                                              "total":  3,
+                                                                              "passed":  2,
+                                                                              "accuracy":  0.67
+                                                                          },
+                                                              "security":  {
+                                                                               "total":  2,
+                                                                               "passed":  1,
+                                                                               "accuracy":  0.5
+                                                                           }
+                                                          },
+                                          "results":  [
+                                                          {
+                                                              "id":  "basic-01",
+                                                              "category":  "deployment",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  2283.3,
+                                                              "cost_usd":  1.59E-05,
+                                                              "tokens":  49,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Deployment lÃ  quÃ¡ trÃ¬nh Ä‘Æ°a code tá»« mÃ¡y báº¡n lÃªn server Ä‘á»ƒ ngÆ°á»i khÃ¡c dÃ¹ng Ä‘Æ°á»£c."
+                                                          },
+                                                          {
+                                                              "id":  "docker-01",
+                                                              "category":  "docker",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  185.2,
+                                                              "cost_usd":  3.57E-05,
+                                                              "tokens":  118,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Container Ä‘Ã³ng gÃ³i code cÃ¹ng dependencies vÃ  runtime thÃ nh image cháº¡y giá»‘ng nhau á»Ÿ má»i mÃ´i trÆ°á»ng. Docker build image tá»« Dockerfile, cháº¡y Ä‘Æ°á»£c á»Ÿ laptop láº«n clou"
+                                                          },
+                                                          {
+                                                              "id":  "docker-02",
+                                                              "category":  "docker",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  232.3,
+                                                              "cost_usd":  3.885E-05,
+                                                              "tokens":  127,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Multi-stage build tÃ¡ch Dockerfile thÃ nh stage builder (cÃ i compiler, build dependencies) vÃ  stage runtime chá»‰ copy káº¿t quáº£ cáº§n thiáº¿t. Image cuá»‘i nhá» hÆ¡n vÃ  Ã­t l"
+                                                          },
+                                                          {
+                                                              "id":  "probe-01",
+                                                              "category":  "reliability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  201.3,
+                                                              "cost_usd":  2.295E-05,
+                                                              "tokens":  81,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Liveness probe (GET /health) cho biáº¿t process cÃ²n sá»‘ng. Náº¿u fail, platform sáº½ restart container."
+                                                          },
+                                                          {
+                                                              "id":  "probe-02",
+                                                              "category":  "reliability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  219.0,
+                                                              "cost_usd":  3.33E-05,
+                                                              "tokens":  111,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Readiness probe (GET /ready) cho biáº¿t instance sáºµn sÃ ng nháº­n traffic. Náº¿u fail, load balancer ngá»«ng route traffic tá»›i instance Ä‘Ã³ nhÆ°ng khÃ´ng restart."
+                                                          },
+                                                          {
+                                                              "id":  "reliability-01",
+                                                              "category":  "reliability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  203.0,
+                                                              "cost_usd":  3.48E-05,
+                                                              "tokens":  115,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Graceful shutdown: khi nháº­n SIGTERM, app ngá»«ng nháº­n request má»›i, chá» cÃ¡c request in-flight hoÃ n thÃ nh rá»“i má»›i thoÃ¡t, nÃªn khÃ´ng lÃ m máº¥t request cá»§a ngÆ°á»i dÃ¹ng."
+                                                          },
+                                                          {
+                                                              "id":  "config-01",
+                                                              "category":  "deployment",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  200.8,
+                                                              "cost_usd":  3.795E-05,
+                                                              "tokens":  124,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "12-Factor App yÃªu cáº§u lÆ°u config trong biáº¿n mÃ´i trÆ°á»ng (environment variables), khÃ´ng hardcode secret trong code, giÃºp cÃ¹ng má»™t image cháº¡y Ä‘Æ°á»£c á»Ÿ dev, staging v"
+                                                          },
+                                                          {
+                                                              "id":  "security-01",
+                                                              "category":  "security",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  187.7,
+                                                              "cost_usd":  3.66E-05,
+                                                              "tokens":  121,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Rate limiting giá»›i háº¡n sá»‘ request má»—i client trong má»™t cá»­a sá»• thá»i gian, vÃ­ dá»¥ 10 req/phÃºt. VÆ°á»£t giá»›i háº¡n thÃ¬ tráº£ HTTP 429 Too Many Requests kÃ¨m header Retry-Af"
+                                                          },
+                                                          {
+                                                              "id":  "security-02",
+                                                              "category":  "security",
+                                                              "passed":  false,
+                                                              "score":  0.0,
+                                                              "missing_keywords":  [
+                                                                                       "token",
+                                                                                       "háº¿t háº¡n",
+                                                                                       "chá»¯ kÃ½"
+                                                                                   ],
+                                                              "latency_ms":  171.9,
+                                                              "cost_usd":  1.71E-05,
+                                                              "tokens":  54,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "CÃ¢u há»i hay! Äiá»u nÃ y phá»¥ thuá»™c vÃ o kiáº¿n trÃºc há»‡ thá»‘ng vÃ  yÃªu cáº§u cá»¥ thá»ƒ cá»§a báº¡n."
+                                                          },
+                                                          {
+                                                              "id":  "scaling-01",
+                                                              "category":  "scaling",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  1708.5,
+                                                              "cost_usd":  3.24E-05,
+                                                              "tokens":  108,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Stateless nghÄ©a lÃ  instance khÃ´ng giá»¯ state trong memory; session Ä‘Æ°á»£c lÆ°u á»Ÿ Redis. Nhá» váº­y cÃ³ thá»ƒ scale ngang nhiá»u instance sau load balancer."
+                                                          },
+                                                          {
+                                                              "id":  "scaling-02",
+                                                              "category":  "scaling",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  201.6,
+                                                              "cost_usd":  2.685E-05,
+                                                              "tokens":  95,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Load balancer nhÆ° Nginx phÃ¢n phá»‘i request tá»›i nhiá»u instance theo round-robin, vÃ  bá» qua instance khÃ´ng healthy."
+                                                          },
+                                                          {
+                                                              "id":  "scaling-03",
+                                                              "category":  "scaling",
+                                                              "passed":  false,
+                                                              "score":  0.0,
+                                                              "missing_keywords":  [
+                                                                                       "cpu",
+                                                                                       "memory",
+                                                                                       "custom metrics"
+                                                                                   ],
+                                                              "latency_ms":  203.3,
+                                                              "cost_usd":  1.995E-05,
+                                                              "tokens":  61,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "ÄÃ¢y lÃ  cÃ¢u tráº£ lá»i tá»« AI agent (mock). Trong production, Ä‘Ã¢y sáº½ lÃ  response tá»« OpenAI/Anthropic."
+                                                          },
+                                                          {
+                                                              "id":  "bench-01",
+                                                              "category":  "benchmark",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  203.9,
+                                                              "cost_usd":  3.195E-05,
+                                                              "tokens":  108,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Percentile p95 lÃ  ngÆ°á»¡ng mÃ  95% request nhanh hÆ¡n. Latency trung bÃ¬nh (average) che giáº¥u tail latency, nÃªn SLO thÆ°á»ng Ä‘áº·t theo p95 hoáº·c p99."
+                                                          },
+                                                          {
+                                                              "id":  "bench-02",
+                                                              "category":  "benchmark",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  219.5,
+                                                              "cost_usd":  3.57E-05,
+                                                              "tokens":  118,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Eval cháº¥t lÆ°á»£ng dÃ¹ng golden dataset: bá»™ cÃ¢u há»i cÃ³ Ä‘Ã¡p Ã¡n mong Ä‘á»£i. Cháº¡y eval trÆ°á»›c má»—i láº§n deploy Ä‘á»ƒ báº¯t regression, vÃ­ dá»¥ accuracy giáº£m so vá»›i phiÃªn báº£n trÆ°á»›c"
+                                                          },
+                                                          {
+                                                              "id":  "obs-01",
+                                                              "category":  "observability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  202.0,
+                                                              "cost_usd":  4.725E-05,
+                                                              "tokens":  150,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Prometheus pull metrics báº±ng cÃ¡ch scrape endpoint /metrics theo chu ká»³. Counter chá»‰ tÄƒng (Ä‘áº¿m request), Gauge lÃªn xuá»‘ng (request Ä‘ang xá»­ lÃ½), Histogram chia lat"
+                                                          },
+                                                          {
+                                                              "id":  "obs-02",
+                                                              "category":  "observability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  185.4,
+                                                              "cost_usd":  4.755E-05,
+                                                              "tokens":  152,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Prometheus pull metrics báº±ng cÃ¡ch scrape endpoint /metrics theo chu ká»³. Counter chá»‰ tÄƒng (Ä‘áº¿m request), Gauge lÃªn xuá»‘ng (request Ä‘ang xá»­ lÃ½), Histogram chia lat"
+                                                          },
+                                                          {
+                                                              "id":  "obs-03",
+                                                              "category":  "observability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  230.8,
+                                                              "cost_usd":  3.645E-05,
+                                                              "tokens":  123,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Label cÃ³ cardinality cao (user_id, request_id, cÃ¢u há»i) lÃ m sá»‘ time series bÃ¹ng ná»• vÃ  Prometheus tá»‘n RAM. Chá»‰ dÃ¹ng label cÃ³ Ã­t giÃ¡ trá»‹ nhÆ° route, status, model."
+                                                          },
+                                                          {
+                                                              "id":  "obs-04",
+                                                              "category":  "observability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  185.4,
+                                                              "cost_usd":  3.975E-05,
+                                                              "tokens":  127,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Distributed tracing ghi láº¡i má»™t request Ä‘i qua nhá»¯ng bÆ°á»›c nÃ o. Má»—i bÆ°á»›c lÃ  má»™t span cÃ³ thá»i gian báº¯t Ä‘áº§u, káº¿t thÃºc vÃ  attributes. OpenTelemetry thu tháº­p trace v"
+                                                          },
+                                                          {
+                                                              "id":  "obs-05",
+                                                              "category":  "observability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  217.2,
+                                                              "cost_usd":  4.05E-05,
+                                                              "tokens":  132,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Distributed tracing ghi láº¡i má»™t request Ä‘i qua nhá»¯ng bÆ°á»›c nÃ o. Má»—i bÆ°á»›c lÃ  má»™t span cÃ³ thá»i gian báº¯t Ä‘áº§u, káº¿t thÃºc vÃ  attributes. OpenTelemetry thu tháº­p trace v"
+                                                          },
+                                                          {
+                                                              "id":  "obs-06",
+                                                              "category":  "observability",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  216.7,
+                                                              "cost_usd":  3.195E-05,
+                                                              "tokens":  108,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Structured logging ghi log dáº¡ng JSON vá»›i cÃ¡c field cá»‘ Ä‘á»‹nh (timestamp, level, request_id, trace_id) Ä‘á»ƒ dá»… tÃ¬m kiáº¿m, lá»c vÃ  liÃªn káº¿t vá»›i trace."
+                                                          },
+                                                          {
+                                                              "id":  "slo-01",
+                                                              "category":  "benchmark",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  203.8,
+                                                              "cost_usd":  3.48E-05,
+                                                              "tokens":  115,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "SLI lÃ  chá»‰ sá»‘ Ä‘o Ä‘Æ°á»£c (vd tá»‰ lá»‡ request thÃ nh cÃ´ng), SLO lÃ  má»¥c tiÃªu cho SLI (vd 99.5% trong 30 ngÃ y). Error budget lÃ  pháº§n Ä‘Æ°á»£c phÃ©p lá»—i cÃ²n láº¡i: 100% - SLO."
+                                                          },
+                                                          {
+                                                              "id":  "cost-01",
+                                                              "category":  "cost",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  231.3,
+                                                              "cost_usd":  3.33E-05,
+                                                              "tokens":  111,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Chi phÃ­ LLM tÃ­nh theo token: cost = input_tokens x giÃ¡ input + output_tokens x giÃ¡ output. Cáº§n theo dÃµi cost theo thá»i gian thá»±c vÃ  Ä‘áº·t budget alert."
+                                                          },
+                                                          {
+                                                              "id":  "cloud-01",
+                                                              "category":  "deployment",
+                                                              "passed":  true,
+                                                              "score":  1.0,
+                                                              "missing_keywords":  [
+
+                                                                                   ],
+                                                              "latency_ms":  218.2,
+                                                              "cost_usd":  3.015E-05,
+                                                              "tokens":  102,
+                                                              "agent_version":  "v2",
+                                                              "answer":  "Cloud Run, Railway, Render lÃ  ná»n táº£ng cháº¡y container managed: tá»± scale, tá»± cáº¥p HTTPS, báº¡n chá»‰ cáº§n cung cáº¥p image vÃ  biáº¿n mÃ´i trÆ°á»ng."
+                                                          }
+                                                      ],
+                                          "quality_gate":  {
+                                                               "min_accuracy":  0.85,
+                                                               "regressions":  [
+
+                                                                               ],
+                                                               "passed":  true
+                                                           }
+                                      },
+                  "eval_v2":  {
+                                  "target":  "http://localhost:8000",
+                                  "agent_version":  "v2",
+                                  "dataset":  "C:\\Users\\Acer\\Downloads\\K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability\\06-lab-complete\\benchmark-observability\\develop\\eval\\golden_dataset.jsonl",
+                                  "total":  23,
+                                  "passed":  23,
+                                  "accuracy":  1.0,
+                                  "avg_score":  1.0,
+                                  "errors":  0,
+                                  "latency_ms":  {
+                                                     "p50":  200.0,
+                                                     "p95":  231.4
+                                                 },
+                                  "total_cost_usd":  0.000796,
+                                  "avg_tokens":  114.3,
+                                  "cost_per_correct_usd":  3.461E-05,
+                                  "by_category":  {
+                                                      "benchmark":  {
+                                                                        "total":  3,
+                                                                        "passed":  3,
+                                                                        "accuracy":  1.0
+                                                                    },
+                                                      "cost":  {
+                                                                   "total":  1,
+                                                                   "passed":  1,
+                                                                   "accuracy":  1.0
+                                                               },
+                                                      "deployment":  {
+                                                                         "total":  3,
+                                                                         "passed":  3,
+                                                                         "accuracy":  1.0
+                                                                     },
+                                                      "docker":  {
+                                                                     "total":  2,
+                                                                     "passed":  2,
+                                                                     "accuracy":  1.0
+                                                                 },
+                                                      "observability":  {
+                                                                            "total":  6,
+                                                                            "passed":  6,
+                                                                            "accuracy":  1.0
+                                                                        },
+                                                      "reliability":  {
+                                                                          "total":  3,
+                                                                          "passed":  3,
+                                                                          "accuracy":  1.0
+                                                                      },
+                                                      "scaling":  {
+                                                                      "total":  3,
+                                                                      "passed":  3,
+                                                                      "accuracy":  1.0
+                                                                  },
+                                                      "security":  {
+                                                                       "total":  2,
+                                                                       "passed":  2,
+                                                                       "accuracy":  1.0
+                                                                   }
+                                                  },
+                                  "results":  [
+                                                  {
+                                                      "id":  "basic-01",
+                                                      "category":  "deployment",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  2283.0,
+                                                      "cost_usd":  1.59E-05,
+                                                      "tokens":  49,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Deployment lÃ  quÃ¡ trÃ¬nh Ä‘Æ°a code tá»« mÃ¡y báº¡n lÃªn server Ä‘á»ƒ ngÆ°á»i khÃ¡c dÃ¹ng Ä‘Æ°á»£c."
+                                                  },
+                                                  {
+                                                      "id":  "docker-01",
+                                                      "category":  "docker",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  217.8,
+                                                      "cost_usd":  3.57E-05,
+                                                      "tokens":  118,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Container Ä‘Ã³ng gÃ³i code cÃ¹ng dependencies vÃ  runtime thÃ nh image cháº¡y giá»‘ng nhau á»Ÿ má»i mÃ´i trÆ°á»ng. Docker build image tá»« Dockerfile, cháº¡y Ä‘Æ°á»£c á»Ÿ laptop láº«n clou"
+                                                  },
+                                                  {
+                                                      "id":  "docker-02",
+                                                      "category":  "docker",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  229.2,
+                                                      "cost_usd":  3.885E-05,
+                                                      "tokens":  127,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Multi-stage build tÃ¡ch Dockerfile thÃ nh stage builder (cÃ i compiler, build dependencies) vÃ  stage runtime chá»‰ copy káº¿t quáº£ cáº§n thiáº¿t. Image cuá»‘i nhá» hÆ¡n vÃ  Ã­t l"
+                                                  },
+                                                  {
+                                                      "id":  "probe-01",
+                                                      "category":  "reliability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  209.5,
+                                                      "cost_usd":  2.295E-05,
+                                                      "tokens":  81,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Liveness probe (GET /health) cho biáº¿t process cÃ²n sá»‘ng. Náº¿u fail, platform sáº½ restart container."
+                                                  },
+                                                  {
+                                                      "id":  "probe-02",
+                                                      "category":  "reliability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  185.4,
+                                                      "cost_usd":  3.33E-05,
+                                                      "tokens":  111,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Readiness probe (GET /ready) cho biáº¿t instance sáºµn sÃ ng nháº­n traffic. Náº¿u fail, load balancer ngá»«ng route traffic tá»›i instance Ä‘Ã³ nhÆ°ng khÃ´ng restart."
+                                                  },
+                                                  {
+                                                      "id":  "reliability-01",
+                                                      "category":  "reliability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  155.1,
+                                                      "cost_usd":  3.48E-05,
+                                                      "tokens":  115,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Graceful shutdown: khi nháº­n SIGTERM, app ngá»«ng nháº­n request má»›i, chá» cÃ¡c request in-flight hoÃ n thÃ nh rá»“i má»›i thoÃ¡t, nÃªn khÃ´ng lÃ m máº¥t request cá»§a ngÆ°á»i dÃ¹ng."
+                                                  },
+                                                  {
+                                                      "id":  "config-01",
+                                                      "category":  "deployment",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  169.0,
+                                                      "cost_usd":  3.795E-05,
+                                                      "tokens":  124,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "12-Factor App yÃªu cáº§u lÆ°u config trong biáº¿n mÃ´i trÆ°á»ng (environment variables), khÃ´ng hardcode secret trong code, giÃºp cÃ¹ng má»™t image cháº¡y Ä‘Æ°á»£c á»Ÿ dev, staging v"
+                                                  },
+                                                  {
+                                                      "id":  "security-01",
+                                                      "category":  "security",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  198.5,
+                                                      "cost_usd":  3.66E-05,
+                                                      "tokens":  121,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Rate limiting giá»›i háº¡n sá»‘ request má»—i client trong má»™t cá»­a sá»• thá»i gian, vÃ­ dá»¥ 10 req/phÃºt. VÆ°á»£t giá»›i háº¡n thÃ¬ tráº£ HTTP 429 Too Many Requests kÃ¨m header Retry-Af"
+                                                  },
+                                                  {
+                                                      "id":  "security-02",
+                                                      "category":  "security",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  200.0,
+                                                      "cost_usd":  3.81E-05,
+                                                      "tokens":  122,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "JWT lÃ  token cÃ³ chá»¯ kÃ½ sá»‘ Ä‘á»ƒ xÃ¡c minh tÃ­nh toÃ n váº¹n vÃ  thÆ°á»ng cÃ³ thá»i háº¡n háº¿t háº¡n; API key lÃ  credential tÄ©nh, thÆ°á»ng nháº­n diá»‡n á»©ng dá»¥ng vÃ  cáº§n Ä‘Æ°á»£c báº£o vá»‡, luÃ¢"
+                                                  },
+                                                  {
+                                                      "id":  "scaling-01",
+                                                      "category":  "scaling",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  168.4,
+                                                      "cost_usd":  3.24E-05,
+                                                      "tokens":  108,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Stateless nghÄ©a lÃ  instance khÃ´ng giá»¯ state trong memory; session Ä‘Æ°á»£c lÆ°u á»Ÿ Redis. Nhá» váº­y cÃ³ thá»ƒ scale ngang nhiá»u instance sau load balancer."
+                                                  },
+                                                  {
+                                                      "id":  "scaling-02",
+                                                      "category":  "scaling",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  231.6,
+                                                      "cost_usd":  2.685E-05,
+                                                      "tokens":  95,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Load balancer nhÆ° Nginx phÃ¢n phá»‘i request tá»›i nhiá»u instance theo round-robin, vÃ  bá» qua instance khÃ´ng healthy."
+                                                  },
+                                                  {
+                                                      "id":  "scaling-03",
+                                                      "category":  "scaling",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  216.3,
+                                                      "cost_usd":  3.33E-05,
+                                                      "tokens":  111,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Kubernetes HPA tá»± Ä‘iá»u chá»‰nh sá»‘ replica dá»±a trÃªn CPU, memory hoáº·c custom metrics nhÆ° request rate; cáº§n khai bÃ¡o requests vÃ  metrics adapter phÃ¹ há»£p."
+                                                  },
+                                                  {
+                                                      "id":  "bench-01",
+                                                      "category":  "benchmark",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  188.9,
+                                                      "cost_usd":  3.195E-05,
+                                                      "tokens":  108,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Percentile p95 lÃ  ngÆ°á»¡ng mÃ  95% request nhanh hÆ¡n. Latency trung bÃ¬nh (average) che giáº¥u tail latency, nÃªn SLO thÆ°á»ng Ä‘áº·t theo p95 hoáº·c p99."
+                                                  },
+                                                  {
+                                                      "id":  "bench-02",
+                                                      "category":  "benchmark",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  198.6,
+                                                      "cost_usd":  3.57E-05,
+                                                      "tokens":  118,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Eval cháº¥t lÆ°á»£ng dÃ¹ng golden dataset: bá»™ cÃ¢u há»i cÃ³ Ä‘Ã¡p Ã¡n mong Ä‘á»£i. Cháº¡y eval trÆ°á»›c má»—i láº§n deploy Ä‘á»ƒ báº¯t regression, vÃ­ dá»¥ accuracy giáº£m so vá»›i phiÃªn báº£n trÆ°á»›c"
+                                                  },
+                                                  {
+                                                      "id":  "obs-01",
+                                                      "category":  "observability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  185.0,
+                                                      "cost_usd":  4.725E-05,
+                                                      "tokens":  150,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Prometheus pull metrics báº±ng cÃ¡ch scrape endpoint /metrics theo chu ká»³. Counter chá»‰ tÄƒng (Ä‘áº¿m request), Gauge lÃªn xuá»‘ng (request Ä‘ang xá»­ lÃ½), Histogram chia lat"
+                                                  },
+                                                  {
+                                                      "id":  "obs-02",
+                                                      "category":  "observability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  229.6,
+                                                      "cost_usd":  4.755E-05,
+                                                      "tokens":  152,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Prometheus pull metrics báº±ng cÃ¡ch scrape endpoint /metrics theo chu ká»³. Counter chá»‰ tÄƒng (Ä‘áº¿m request), Gauge lÃªn xuá»‘ng (request Ä‘ang xá»­ lÃ½), Histogram chia lat"
+                                                  },
+                                                  {
+                                                      "id":  "obs-03",
+                                                      "category":  "observability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  217.4,
+                                                      "cost_usd":  3.645E-05,
+                                                      "tokens":  123,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Label cÃ³ cardinality cao (user_id, request_id, cÃ¢u há»i) lÃ m sá»‘ time series bÃ¹ng ná»• vÃ  Prometheus tá»‘n RAM. Chá»‰ dÃ¹ng label cÃ³ Ã­t giÃ¡ trá»‹ nhÆ° route, status, model."
+                                                  },
+                                                  {
+                                                      "id":  "obs-04",
+                                                      "category":  "observability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  217.3,
+                                                      "cost_usd":  3.975E-05,
+                                                      "tokens":  127,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Distributed tracing ghi láº¡i má»™t request Ä‘i qua nhá»¯ng bÆ°á»›c nÃ o. Má»—i bÆ°á»›c lÃ  má»™t span cÃ³ thá»i gian báº¯t Ä‘áº§u, káº¿t thÃºc vÃ  attributes. OpenTelemetry thu tháº­p trace v"
+                                                  },
+                                                  {
+                                                      "id":  "obs-05",
+                                                      "category":  "observability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  173.9,
+                                                      "cost_usd":  4.05E-05,
+                                                      "tokens":  132,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Distributed tracing ghi láº¡i má»™t request Ä‘i qua nhá»¯ng bÆ°á»›c nÃ o. Má»—i bÆ°á»›c lÃ  má»™t span cÃ³ thá»i gian báº¯t Ä‘áº§u, káº¿t thÃºc vÃ  attributes. OpenTelemetry thu tháº­p trace v"
+                                                  },
+                                                  {
+                                                      "id":  "obs-06",
+                                                      "category":  "observability",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  216.7,
+                                                      "cost_usd":  3.195E-05,
+                                                      "tokens":  108,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Structured logging ghi log dáº¡ng JSON vá»›i cÃ¡c field cá»‘ Ä‘á»‹nh (timestamp, level, request_id, trace_id) Ä‘á»ƒ dá»… tÃ¬m kiáº¿m, lá»c vÃ  liÃªn káº¿t vá»›i trace."
+                                                  },
+                                                  {
+                                                      "id":  "slo-01",
+                                                      "category":  "benchmark",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  202.5,
+                                                      "cost_usd":  3.48E-05,
+                                                      "tokens":  115,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "SLI lÃ  chá»‰ sá»‘ Ä‘o Ä‘Æ°á»£c (vd tá»‰ lá»‡ request thÃ nh cÃ´ng), SLO lÃ  má»¥c tiÃªu cho SLI (vd 99.5% trong 30 ngÃ y). Error budget lÃ  pháº§n Ä‘Æ°á»£c phÃ©p lá»—i cÃ²n láº¡i: 100% - SLO."
+                                                  },
+                                                  {
+                                                      "id":  "cost-01",
+                                                      "category":  "cost",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  186.9,
+                                                      "cost_usd":  3.33E-05,
+                                                      "tokens":  111,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Chi phÃ­ LLM tÃ­nh theo token: cost = input_tokens x giÃ¡ input + output_tokens x giÃ¡ output. Cáº§n theo dÃµi cost theo thá»i gian thá»±c vÃ  Ä‘áº·t budget alert."
+                                                  },
+                                                  {
+                                                      "id":  "cloud-01",
+                                                      "category":  "deployment",
+                                                      "passed":  true,
+                                                      "score":  1.0,
+                                                      "missing_keywords":  [
+
+                                                                           ],
+                                                      "latency_ms":  170.9,
+                                                      "cost_usd":  3.015E-05,
+                                                      "tokens":  102,
+                                                      "agent_version":  "v2",
+                                                      "answer":  "Cloud Run, Railway, Render lÃ  ná»n táº£ng cháº¡y container managed: tá»± scale, tá»± cáº¥p HTTPS, báº¡n chá»‰ cáº§n cung cáº¥p image vÃ  biáº¿n mÃ´i trÆ°á»ng."
+                                                  }
+                                              ],
+                                  "quality_gate":  {
+                                                       "min_accuracy":  0.85,
+                                                       "regressions":  [
+
+                                                                       ],
+                                                       "passed":  true
+                                                   }
+                              }
+              },
+    "locust":  {
+                   "baseline":  [
+                                    {
+                                        "Type":  "POST",
+                                        "Name":  "/ask",
+                                        "Request Count":  "184",
+                                        "Failure Count":  "0",
+                                        "Median Response Time":  "190",
+                                        "Average Response Time":  "223.35188078262075",
+                                        "Min Response Time":  "155.12902900081826",
+                                        "Max Response Time":  "1698.5236790023919",
+                                        "Average Content Size":  "405.0652173913044",
+                                        "Requests/s":  "6.370720504517203",
+                                        "Failures/s":  "0.0",
+                                        "50%":  "190",
+                                        "66%":  "200",
+                                        "75%":  "210",
+                                        "80%":  "210",
+                                        "90%":  "220",
+                                        "95%":  "220",
+                                        "98%":  "1700",
+                                        "99%":  "1700",
+                                        "99.9%":  "1700",
+                                        "99.99%":  "1700",
+                                        "100%":  "1700"
+                                    },
+                                    {
+                                        "Type":  "GET",
+                                        "Name":  "/health",
+                                        "Request Count":  "15",
+                                        "Failure Count":  "0",
+                                        "Median Response Time":  "3",
+                                        "Average Response Time":  "6.914834132961308",
+                                        "Min Response Time":  "2.321959000255447",
+                                        "Max Response Time":  "32.59903499929351",
+                                        "Average Content Size":  "80.0",
+                                        "Requests/s":  "0.5193522150421633",
+                                        "Failures/s":  "0.0",
+                                        "50%":  "3",
+                                        "66%":  "3",
+                                        "75%":  "4",
+                                        "80%":  "7",
+                                        "90%":  "28",
+                                        "95%":  "33",
+                                        "98%":  "33",
+                                        "99%":  "33",
+                                        "99.9%":  "33",
+                                        "99.99%":  "33",
+                                        "100%":  "33"
+                                    },
+                                    {
+                                        "Type":  "",
+                                        "Name":  "Aggregated",
+                                        "Request Count":  "199",
+                                        "Failure Count":  "0",
+                                        "Median Response Time":  "190",
+                                        "Average Response Time":  "207.03753053264643",
+                                        "Min Response Time":  "2.321959000255447",
+                                        "Max Response Time":  "1698.5236790023919",
+                                        "Average Content Size":  "380.56281407035175",
+                                        "Requests/s":  "6.890072719559367",
+                                        "Failures/s":  "0.0",
+                                        "50%":  "190",
+                                        "66%":  "200",
+                                        "75%":  "200",
+                                        "80%":  "210",
+                                        "90%":  "220",
+                                        "95%":  "220",
+                                        "98%":  "1700",
+                                        "99%":  "1700",
+                                        "99.9%":  "1700",
+                                        "99.99%":  "1700",
+                                        "100%":  "1700"
+                                    }
+                                ],
+                   "slow30":  [
+                                  {
+                                      "Type":  "POST",
+                                      "Name":  "/ask",
+                                      "Request Count":  "1394",
+                                      "Failure Count":  "156",
+                                      "Median Response Time":  "200",
+                                      "Average Response Time":  "828.1838407511015",
+                                      "Min Response Time":  "0.8273509993159678",
+                                      "Max Response Time":  "10003.443033001531",
+                                      "Average Content Size":  "381.5329985652798",
+                                      "Requests/s":  "8.739274825354475",
+                                      "Failures/s":  "0.9779963219191522",
+                                      "50%":  "200",
+                                      "66%":  "220",
+                                      "75%":  "1700",
+                                      "80%":  "1700",
+                                      "90%":  "1700",
+                                      "95%":  "1700",
+                                      "98%":  "10000",
+                                      "99%":  "10000",
+                                      "99.9%":  "10000",
+                                      "99.99%":  "10000",
+                                      "100%":  "10000"
+                                  },
+                                  {
+                                      "Type":  "GET",
+                                      "Name":  "/health",
+                                      "Request Count":  "142",
+                                      "Failure Count":  "9",
+                                      "Median Response Time":  "3",
+                                      "Average Response Time":  "244.31175156340186",
+                                      "Min Response Time":  "1.1063510028179735",
+                                      "Max Response Time":  "34242.854921998514",
+                                      "Average Content Size":  "84.88028169014085",
+                                      "Requests/s":  "0.8902274212341",
+                                      "Failures/s":  "0.05642286472610493",
+                                      "50%":  "3",
+                                      "66%":  "3",
+                                      "75%":  "3",
+                                      "80%":  "3",
+                                      "90%":  "3",
+                                      "95%":  "5",
+                                      "98%":  "22",
+                                      "99%":  "32",
+                                      "99.9%":  "34000",
+                                      "99.99%":  "34000",
+                                      "100%":  "34000"
+                                  },
+                                  {
+                                      "Type":  "",
+                                      "Name":  "Aggregated",
+                                      "Request Count":  "1536",
+                                      "Failure Count":  "165",
+                                      "Median Response Time":  "200",
+                                      "Average Response Time":  "774.2060825058843",
+                                      "Min Response Time":  "0.8273509993159678",
+                                      "Max Response Time":  "34242.854921998514",
+                                      "Average Content Size":  "354.1080729166667",
+                                      "Requests/s":  "9.629502246588576",
+                                      "Failures/s":  "1.034419186645257",
+                                      "50%":  "200",
+                                      "66%":  "210",
+                                      "75%":  "1700",
+                                      "80%":  "1700",
+                                      "90%":  "1700",
+                                      "95%":  "1700",
+                                      "98%":  "10000",
+                                      "99%":  "10000",
+                                      "99.9%":  "10000",
+                                      "99.99%":  "34000",
+                                      "100%":  "34000"
+                                  }
+                              ]
+               },
+    "trace":  {
+                  "id":  "6d472bd357efd848aac39d0ed294a5fa",
+                  "duration_ms":  1806.4,
+                  "dominant_span":  "chat mock-llm-small",
+                  "dominant_span_ms":  1666.2,
+                  "trace_file":  "../production/benchmark-results/slow-trace.json"
+              },
+    "alerts":  {
+                   "verified":  [
+                                    "AgentHighLatencyP95",
+                                    "AgentInstanceDown"
+                                ],
+                   "evidence_file":  "../production/benchmark-results/alerts-firing.json"
+               },
+    "screenshots":  "../production/benchmark-results/screenshots"
+}

@@ -101,3 +101,46 @@ Request
 1. Khi nào nên dùng API Key vs JWT vs OAuth2?
 2. Rate limit nên đặt bao nhiêu request/phút cho một AI agent?
 3. Nếu API key bị lộ, bạn phát hiện và xử lý như thế nào?
+# API Security lab
+
+## API key authentication (develop)
+
+`develop/app.py` protects `POST /ask` with the `verify_api_key` FastAPI dependency. A missing key returns **401** and a wrong key returns **403**. The key is read from `AGENT_API_KEY` at process start; rotate it by changing the secret in the deployment environment and restarting/redeploying the service. Do not commit real keys. The bundled fallback is only for local learning.
+
+```powershell
+$env:AGENT_API_KEY = 'local-lab-key'
+cd develop
+pip install -r requirements.txt
+python app.py
+```
+
+Send the key using `X-API-Key: local-lab-key`. Try with no header and with `X-API-Key: wrong` to observe 401 and 403.
+
+## JWT and rate limits (production)
+
+`POST /auth/token` checks the demo user credentials in `production/auth.py` and signs a 60-minute HS256 token with `JWT_SECRET`. `verify_token` validates signature and expiry for protected endpoints. Credentials are `student / demo123` (user) and `teacher / teach456` (admin); use a non-default `JWT_SECRET` outside the lab.
+
+The rate limiter is an in-process **sliding timestamp window**: users get **10 requests per 60 seconds**, admins **100 per 60 seconds**. The role decides which limiter instance `/ask` uses. A rejected request returns **429**, `Retry-After`, and `X-RateLimit-*` headers. This demo limiter is per-process, so production multi-instance deployments should move it to shared Redis.
+
+## Redis monthly cost guard
+
+The production guard reserves estimated cost atomically in Redis before calling the LLM, then reconciles it to measured usage. Each user is limited to **$10 per UTC calendar month**. The Redis key includes `YYYY-MM`; a new month starts with a fresh budget. If Redis is unavailable, protected calls return 503 (fail closed).
+
+Start Redis in one terminal:
+
+```powershell
+docker run --rm --name api-security-redis -p 6379:6379 redis:7-alpine
+```
+
+In another terminal, from `04-api-gateway/production`:
+
+```powershell
+pip install -r requirements.txt
+$env:JWT_SECRET = 'local-lab-jwt-secret-change-me'
+$env:REDIS_URL = 'redis://localhost:6379/0'
+python app.py
+```
+
+Get a JWT, then call `/ask` with `Authorization: Bearer <token>`. Use `/me/usage` to inspect monthly usage. Send 11 rapid `/ask` calls as `student` to see the 11th rejected with 429; `teacher` can make 100 in the same window. Reset the local demo counters with `docker exec api-security-redis redis-cli FLUSHDB`.
+
+The demo credentials, API key fallback, in-memory rate limiter, and example secrets are for learning only. Use a user store, secret manager, and shared Redis rate limiter in a real deployment.

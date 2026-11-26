@@ -1,0 +1,20 @@
+2026-11-26 15:44:58.431: [INFO] CurrentProfilePath: C:\Users\Acer\Downloads\K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability\06-lab-complete\benchmark-observability\production\benchmark-results\edge-profile-grafana\Default
+2026-11-26 15:44:58.431: [INFO] Profiles total count: 1
+2026-11-26 15:44:58.431: [INFO] Profile: name=Profile 1 path=C:\Users\Acer\Downloads\K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability\06-lab-complete\benchmark-observability\production\benchmark-results\edge-profile-grafana\Default lastActive=2026-11-26T15:44:58.415Z
+2026-11-26 15:44:58.431: [INFO] LastUsedProfileDir: C:\Users\Acer\Downloads\K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability\06-lab-complete\benchmark-observability\production\benchmark-results\edge-profile-grafana\Default
+2026-11-26 15:44:58.431: [INFO] MostRecentlyActiveProfile: name=Profile 1 path=C:\Users\Acer\Downloads\K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability\06-lab-complete\benchmark-observability\production\benchmark-results\edge-profile-grafana\Default lastActive=2026-11-26T15:44:58.415Z
+2026-11-26 15:44:58.431: [INFO] OnDoneLoading sync enabled: 0
+2026-11-26 15:44:58.431: [INFO] BookmarkModelLoaded, ids_reassigned: 0
+2026-11-26 15:44:58.431: [INFO] BookmarksLoadDropped droppedNodes=0
+2026-11-26 15:44:58.431: [INFO] BookmarksSnapshot Startup total=2 bar=2 other=0 mobile=0 showBar=0 showBarNTP=1
+2026-11-26 15:44:58.436: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2026-11-26 15:44:58.645: [INFO] VisibilityChanged: 0
+2026-11-26 15:44:59.650: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2026-11-26 15:44:59.658: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 3
+2026-11-26 15:44:59.660: [INFO] Primary account changed.
+2026-11-26 15:44:59.660: [INFO] OnPrimaryAccountChanged PrimaryAccountChangeEvent::Type::kSet
+2026-11-26 15:44:59.674: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 3
+2026-11-26 15:44:59.686: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 3
+2026-11-26 15:45:00.609: [INFO] BookmarkNodeAdded, ABU: 0
+2026-11-26 15:45:00.610: [INFO] BookmarkNodeAdded, ABU: 0
+2026-11-26 15:45:01.228: [INFO] BookmarksSnapshot Shutdown total=3 bar=3 other=0 mobile=0 showBar=0 showBarNTP=1

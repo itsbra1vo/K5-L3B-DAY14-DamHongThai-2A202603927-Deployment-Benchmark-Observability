@@ -1,0 +1,269 @@
+﻿{
+    "result":  {
+                   "resourceSpans":  [
+                                         {
+                                             "resource":  {
+                                                              "attributes":  [
+                                                                                 {
+                                                                                     "key":  "agent.version",
+                                                                                     "value":  {
+                                                                                                   "stringValue":  "v2"
+                                                                                               }
+                                                                                 },
+                                                                                 {
+                                                                                     "key":  "deployment.environment.name",
+                                                                                     "value":  {
+                                                                                                   "stringValue":  "lab"
+                                                                                               }
+                                                                                 },
+                                                                                 {
+                                                                                     "key":  "service.instance.id",
+                                                                                     "value":  {
+                                                                                                   "stringValue":  "afacbf36e60d"
+                                                                                               }
+                                                                                 },
+                                                                                 {
+                                                                                     "key":  "service.name",
+                                                                                     "value":  {
+                                                                                                   "stringValue":  "observable-agent"
+                                                                                               }
+                                                                                 },
+                                                                                 {
+                                                                                     "key":  "service.version",
+                                                                                     "value":  {
+                                                                                                   "stringValue":  "1.0.0"
+                                                                                               }
+                                                                                 },
+                                                                                 {
+                                                                                     "key":  "telemetry.sdk.language",
+                                                                                     "value":  {
+                                                                                                   "stringValue":  "python"
+                                                                                               }
+                                                                                 },
+                                                                                 {
+                                                                                     "key":  "telemetry.sdk.name",
+                                                                                     "value":  {
+                                                                                                   "stringValue":  "opentelemetry"
+                                                                                               }
+                                                                                 },
+                                                                                 {
+                                                                                     "key":  "telemetry.sdk.version",
+                                                                                     "value":  {
+                                                                                                   "stringValue":  "1.45.2"
+                                                                                               }
+                                                                                 }
+                                                                             ]
+                                                          },
+                                             "scopeSpans":  [
+                                                                {
+                                                                    "scope":  {
+                                                                                  "name":  "agent"
+                                                                              },
+                                                                    "spans":  [
+                                                                                  {
+                                                                                      "traceId":  "6d472bd357efd848aac39d0ed294a5fa",
+                                                                                      "spanId":  "35ef3fd116966693",
+                                                                                      "parentSpanId":  "6ec9ef39e4aba9b5",
+                                                                                      "flags":  256,
+                                                                                      "name":  "agent.retrieve_context",
+                                                                                      "kind":  1,
+                                                                                      "startTimeUnixNano":  "1795707787377173786",
+                                                                                      "endTimeUnixNano":  "1795707787401393807",
+                                                                                      "attributes":  [
+                                                                                                         {
+                                                                                                             "key":  "retrieval.documents",
+                                                                                                             "value":  {
+                                                                                                                           "intValue":  "1"
+                                                                                                                       }
+                                                                                                         }
+                                                                                                     ],
+                                                                                      "status":  {
+
+                                                                                                 }
+                                                                                  },
+                                                                                  {
+                                                                                      "traceId":  "6d472bd357efd848aac39d0ed294a5fa",
+                                                                                      "spanId":  "d0f8daa21f217d63",
+                                                                                      "parentSpanId":  "6ec9ef39e4aba9b5",
+                                                                                      "flags":  256,
+                                                                                      "name":  "chat mock-llm-small",
+                                                                                      "kind":  1,
+                                                                                      "startTimeUnixNano":  "1795707787401537440",
+                                                                                      "endTimeUnixNano":  "1795707789067736118",
+                                                                                      "attributes":  [
+                                                                                                         {
+                                                                                                             "key":  "gen_ai.operation.name",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "chat"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "gen_ai.provider.name",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "mock"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "gen_ai.request.model",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "mock-llm-small"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "gen_ai.usage.input_tokens",
+                                                                                                             "value":  {
+                                                                                                                           "intValue":  "73"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "gen_ai.usage.output_tokens",
+                                                                                                             "value":  {
+                                                                                                                           "intValue":  "35"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "llm.cost_usd",
+                                                                                                             "value":  {
+                                                                                                                           "doubleValue":  0.00003195
+                                                                                                                       }
+                                                                                                         }
+                                                                                                     ],
+                                                                                      "status":  {
+
+                                                                                                 }
+                                                                                  },
+                                                                                  {
+                                                                                      "traceId":  "6d472bd357efd848aac39d0ed294a5fa",
+                                                                                      "spanId":  "6ec9ef39e4aba9b5",
+                                                                                      "parentSpanId":  "70a881bacb8103f8",
+                                                                                      "flags":  256,
+                                                                                      "name":  "agent.run",
+                                                                                      "kind":  1,
+                                                                                      "startTimeUnixNano":  "1795707787377124171",
+                                                                                      "endTimeUnixNano":  "1795707789067866365",
+                                                                                      "attributes":  [
+                                                                                                         {
+                                                                                                             "key":  "agent.question.length",
+                                                                                                             "value":  {
+                                                                                                                           "intValue":  "51"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "agent.version",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "v2"
+                                                                                                                       }
+                                                                                                         }
+                                                                                                     ],
+                                                                                      "status":  {
+
+                                                                                                 }
+                                                                                  }
+                                                                              ]
+                                                                },
+                                                                {
+                                                                    "scope":  {
+                                                                                  "name":  "opentelemetry.instrumentation.fastapi",
+                                                                                  "version":  "0.66b2"
+                                                                              },
+                                                                    "spans":  [
+                                                                                  {
+                                                                                      "traceId":  "6d472bd357efd848aac39d0ed294a5fa",
+                                                                                      "spanId":  "70a881bacb8103f8",
+                                                                                      "flags":  256,
+                                                                                      "name":  "POST /ask",
+                                                                                      "kind":  2,
+                                                                                      "startTimeUnixNano":  "1795707787263162423",
+                                                                                      "endTimeUnixNano":  "1795707789069534803",
+                                                                                      "attributes":  [
+                                                                                                         {
+                                                                                                             "key":  "http.flavor",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "1.1"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.host",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "172.20.0.6:8000"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.method",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "POST"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.route",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "/ask"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.scheme",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "http"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.server_name",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "nginx"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.status_code",
+                                                                                                             "value":  {
+                                                                                                                           "intValue":  "200"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.target",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "/ask"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.url",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "http://nginx/ask"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "http.user_agent",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "python-requests/2.34.2"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "net.host.port",
+                                                                                                             "value":  {
+                                                                                                                           "intValue":  "8000"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "net.peer.ip",
+                                                                                                             "value":  {
+                                                                                                                           "stringValue":  "172.20.0.5"
+                                                                                                                       }
+                                                                                                         },
+                                                                                                         {
+                                                                                                             "key":  "net.peer.port",
+                                                                                                             "value":  {
+                                                                                                                           "intValue":  "47780"
+                                                                                                                       }
+                                                                                                         }
+                                                                                                     ],
+                                                                                      "status":  {
+
+                                                                                                 }
+                                                                                  }
+                                                                              ],
+                                                                    "schemaUrl":  "https://opentelemetry.io/schemas/1.11.0"
+                                                                }
+                                                            ]
+                                         }
+                                     ]
+               }
+}

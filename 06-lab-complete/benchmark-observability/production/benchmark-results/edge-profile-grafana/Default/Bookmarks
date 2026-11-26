@@ -1,0 +1,93 @@
+{
+   "checksum": "a00bf44163dca046ecba157eb7c9d588",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13440181498431586",
+            "date_last_used": "0",
+            "guid": "d7ab4744-b6f1-42e8-aa55-54ca315a36ce",
+            "id": "7",
+            "name": "Agoda",
+            "show_icon": false,
+            "source": "oem_preload",
+            "type": "url",
+            "url": "https://s3.amazonaws.com/amundsen/redirect/19q2/agoda.html?utm_source=win32&utm_medium=favorite",
+            "visit_count": 0
+         }, {
+            "date_added": "13440181498431120",
+            "date_last_used": "0",
+            "guid": "e0057bed-bd3e-42ad-84a3-82ada9d3a593",
+            "id": "6",
+            "name": "Amazon",
+            "show_icon": false,
+            "source": "oem_preload",
+            "type": "url",
+            "url": "https://s3.amazonaws.com/amundsen/redirect/19q2/amazon.html?utm_source=win32&utm_medium=favorite",
+            "visit_count": 0
+         }, {
+            "children": [ {
+               "date_added": "13331121488872435",
+               "date_last_used": "0",
+               "guid": "f6e41fb3-44bb-48a0-a284-574a5633ecb9",
+               "id": "9",
+               "name": "Acer",
+               "show_icon": false,
+               "source": "import_fre",
+               "type": "url",
+               "url": "http://www.acer.com/",
+               "visit_count": 0
+            } ],
+            "date_added": "13440181500609629",
+            "date_last_used": "0",
+            "date_modified": "0",
+            "guid": "e4945a7f-2513-41b1-92d3-dbdee04fb771",
+            "id": "8",
+            "name": "Acer",
+            "source": "import_fre",
+            "type": "folder"
+         } ],
+         "date_added": "13440181498268762",
+         "date_last_used": "0",
+         "date_modified": "13440181498431586",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Favorites bar",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13440181498268762",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other favorites",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13440181498268762",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile favorites",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "workspaces_v2": {
+         "children": [  ],
+         "date_added": "13440181498268762",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "75aa6670-344f-549d-b742-660f029506ab",
+         "id": "4",
+         "name": "Workspaces",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}

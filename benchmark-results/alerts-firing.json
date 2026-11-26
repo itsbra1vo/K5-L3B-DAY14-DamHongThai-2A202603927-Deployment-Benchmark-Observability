@@ -1,0 +1,15 @@
+﻿{
+    "labels":  {
+                   "alertname":  "AgentInstanceDown",
+                   "instance":  "172.20.0.6:8000",
+                   "job":  "agent",
+                   "severity":  "critical"
+               },
+    "annotations":  {
+                        "description":  "Prometheus khÃ´ng gá»i ÄÆ°á»£c /metrics cá»§a 172.20.0.6:8000 trong 30s",
+                        "summary":  "Instance agent 172.20.0.6:8000 khÃ´ng scrape ÄÆ°á»£c"
+                    },
+    "state":  "firing",
+    "activeAt":  "2026-11-26T15:58:47.401817116Z",
+    "value":  "0e+00"
+}

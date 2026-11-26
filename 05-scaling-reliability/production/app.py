@@ -31,18 +31,14 @@ from pydantic import BaseModel
 import uvicorn
 from utils.mock_llm import ask
 
-# ── Redis (optional — fallback to in-memory dict nếu không có Redis)
-try:
-    import redis
-    REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
-    _redis = redis.from_url(REDIS_URL, decode_responses=True)
-    _redis.ping()
-    USE_REDIS = True
-    print("✅ Connected to Redis")
-except Exception:
-    USE_REDIS = False
-    _memory_store: dict = {}
-    print("⚠️  Redis not available — using in-memory store (not scalable!)")
+# Conversation state must be shared by every replica. Never silently fall back
+# to process-local memory, because that would make sessions disappear on failover.
+import redis
+
+REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
+_redis = redis.Redis.from_url(
+    REDIS_URL, decode_responses=True, socket_connect_timeout=1, socket_timeout=2
+)
 
 
 logging.basicConfig(level=logging.INFO)
@@ -59,18 +55,13 @@ INSTANCE_ID = os.getenv("INSTANCE_ID", f"instance-{uuid.uuid4().hex[:6]}")
 def save_session(session_id: str, data: dict, ttl_seconds: int = 3600):
     """Lưu session vào Redis với TTL."""
     serialized = json.dumps(data)
-    if USE_REDIS:
-        _redis.setex(f"session:{session_id}", ttl_seconds, serialized)
-    else:
-        _memory_store[f"session:{session_id}"] = data
+    _redis.setex(f"session:{session_id}", ttl_seconds, serialized)
 
 
 def load_session(session_id: str) -> dict:
     """Load session từ Redis."""
-    if USE_REDIS:
-        data = _redis.get(f"session:{session_id}")
-        return json.loads(data) if data else {}
-    return _memory_store.get(f"session:{session_id}", {})
+    data = _redis.get(f"session:{session_id}")
+    return json.loads(data) if data else {}
 
 
 def append_to_history(session_id: str, role: str, content: str):
@@ -93,7 +84,7 @@ def append_to_history(session_id: str, role: str, content: str):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info(f"Starting instance {INSTANCE_ID}")
-    logger.info(f"Storage: {'Redis ✅' if USE_REDIS else 'In-memory ⚠️'}")
+    logger.info("Storage: Redis")
     yield
     logger.info(f"Instance {INSTANCE_ID} shutting down")
 
@@ -133,19 +124,16 @@ async def chat(body: ChatRequest):
     Gửi session_id trong các request tiếp theo để tiếp tục cuộc trò chuyện.
     Agent có thể chạy trên bất kỳ instance nào — state trong Redis.
     """
-    # Tạo hoặc dùng session hiện có
-    session_id = body.session_id or str(uuid.uuid4())
-
-    # Thêm câu hỏi vào history
-    append_to_history(session_id, "user", body.question)
-
-    # Gọi LLM với context (trong mock, ta chỉ dùng câu hỏi hiện tại)
-    session = load_session(session_id)
-    history = session.get("history", [])
-    answer = ask(body.question)
-
-    # Lưu response vào history
-    append_to_history(session_id, "assistant", answer)
+    try:
+        session_id = body.session_id or str(uuid.uuid4())
+        append_to_history(session_id, "user", body.question)
+        session = load_session(session_id)
+        history = session.get("history", [])
+        answer = ask(body.question)
+        append_to_history(session_id, "assistant", answer)
+    except redis.RedisError as exc:
+        logger.exception("Redis unavailable while handling chat")
+        raise HTTPException(503, "Conversation storage unavailable") from exc
 
     return {
         "session_id": session_id,
@@ -153,14 +141,17 @@ async def chat(body: ChatRequest):
         "answer": answer,
         "turn": len([m for m in history if m["role"] == "user"]) + 1,
         "served_by": INSTANCE_ID,  # ← thấy rõ bất kỳ instance nào cũng serve được
-        "storage": "redis" if USE_REDIS else "in-memory",
+        "storage": "redis",
     }
 
 
 @app.get("/chat/{session_id}/history")
 def get_history(session_id: str):
     """Xem conversation history của một session."""
-    session = load_session(session_id)
+    try:
+        session = load_session(session_id)
+    except redis.RedisError as exc:
+        raise HTTPException(503, "Conversation storage unavailable") from exc
     if not session:
         raise HTTPException(404, f"Session {session_id} not found or expired")
     return {
@@ -173,10 +164,10 @@ def get_history(session_id: str):
 @app.delete("/chat/{session_id}")
 def delete_session(session_id: str):
     """Xóa session (user logout)."""
-    if USE_REDIS:
+    try:
         _redis.delete(f"session:{session_id}")
-    else:
-        _memory_store.pop(f"session:{session_id}", None)
+    except redis.RedisError as exc:
+        raise HTTPException(503, "Conversation storage unavailable") from exc
     return {"deleted": session_id}
 
 
@@ -186,35 +177,29 @@ def delete_session(session_id: str):
 
 @app.get("/health")
 def health():
-    redis_ok = False
-    if USE_REDIS:
-        try:
-            _redis.ping()
-            redis_ok = True
-        except Exception:
-            redis_ok = False
-
-    status = "ok" if (not USE_REDIS or redis_ok) else "degraded"
+    try:
+        redis_ok = bool(_redis.ping())
+    except redis.RedisError:
+        redis_ok = False
 
     return {
-        "status": status,
+        "status": "ok" if redis_ok else "degraded",
         "instance_id": INSTANCE_ID,
         "uptime_seconds": round(time.time() - START_TIME, 1),
-        "storage": "redis" if USE_REDIS else "in-memory",
-        "redis_connected": redis_ok if USE_REDIS else "N/A",
+        "storage": "redis",
+        "redis_connected": redis_ok,
     }
 
 
 @app.get("/ready")
 def ready():
-    if USE_REDIS:
-        try:
-            _redis.ping()
-        except Exception:
-            raise HTTPException(503, "Redis not available")
+    try:
+        _redis.ping()
+    except redis.RedisError as exc:
+        raise HTTPException(503, "Redis not available") from exc
     return {"ready": True, "instance": INSTANCE_ID}
 
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=port, timeout_graceful_shutdown=30)

@@ -8,8 +8,6 @@
 # bởi instance khác nhau, nhưng session vẫn liên tục vì Redis!
 # ============================================================
 
-version: "3.9"
-
 services:
 
   # ──────────────────────────────────────
@@ -23,8 +21,6 @@ services:
       - REDIS_URL=redis://redis:6379/0
       - ENVIRONMENT=demo
       - PORT=8000
-    env_file:
-      - .env.local
     depends_on:
       redis:
         condition: service_healthy
@@ -37,13 +33,8 @@ services:
     restart: unless-stopped
     networks:
       - agent_net
+    stop_grace_period: 35s
     # Không expose port — chỉ access qua nginx
-    deploy:
-      replicas: 3           # ← scale to 3 instances
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 256M
 
   # ──────────────────────────────────────
   # Redis
@@ -58,6 +49,7 @@ services:
       retries: 3
     networks:
       - agent_net
+    stop_grace_period: 10s
 
   # ──────────────────────────────────────
   # Nginx — Load Balancer
@@ -70,6 +62,7 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - agent
+    stop_grace_period: 10s
     networks:
       - agent_net
 
