@@ -1,7 +1,7 @@
 # Benchmark & Observability Report — Day 14
 
-**Người thực hiện:** Codex cùng người dùng  
-**Ngày chạy:** 2026-11-26 (Asia/Saigon)  
+**Người thực hiện:** Đàm Hồng Thái
+**Ngày chạy:** 26/11/2026  
 **Môi trường:** Windows 11, Python 3.11, local FastAPI mock agent; Docker Compose production stack (2 agent replicas, Nginx, Prometheus, Grafana, Jaeger, Locust).  
 **SLO dùng trong benchmark:** `/ask` p95 < 500 ms; error rate ≤ 2%; golden-set accuracy ≥ 85%.
 
