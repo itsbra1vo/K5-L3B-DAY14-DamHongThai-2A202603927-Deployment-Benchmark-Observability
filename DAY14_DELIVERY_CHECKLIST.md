@@ -1,7 +1,7 @@
 #  Delivery Checklist — Day 14 Lab Submission
 
-> **Student Name:** _________________________  
-> **Student ID:** _________________________  
+> **Student Name:** Đàm Hồng Thái  
+> **Student ID:** 2A202603927  
 > **Date:** _________________________
 
 ---
