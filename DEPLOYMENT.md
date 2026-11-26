@@ -63,7 +63,7 @@ Expected: `/health` and `/ready` return 200; unauthenticated `/ask` returns 401;
 
 ## Local verification (2026-11-26)
 
-Started the app with a temporary local API key and no Redis service. Results: `GET /health` â†’ 200; `GET /ready` â†’ 503; unauthenticated `POST /ask` â†’ 401; authenticated `POST /ask` â†’ 503 because Redis was unavailable. No public URL or authenticated successful response has been verified yet.
+The complete Docker checker started the application and Redis and verified runtime health/readiness, authentication, rate limiting, cost guard, stateless restart behavior, and JSON logging. The checker summary was 40/40 checks passed with 11/12 criteria; its Windows-only runtime SIGTERM probe was unavailable, while the Docker stop check passed. No public URL or cloud authenticated request has been verified.
 
 ## Configuration comparison: `render.yaml` vs `railway.toml`
 
