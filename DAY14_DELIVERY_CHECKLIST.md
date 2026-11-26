@@ -1,261 +1,99 @@
-#  Delivery Checklist — Day 14 Lab Submission
+# Day 14 Lab — Delivery Checklist
 
-> **Student Name:** Đàm Hồng Thái  
-> **Student ID:** 2A202603927  
-> **Date:** _________________________
-
----
-
-##  Submission Requirements
-
-Submit a **GitHub repository** containing:
-
-### 1. Mission Answers (40 points)
-
-Create a file `MISSION_ANSWERS.md` with your answers to all exercises:
-
-```markdown
-# Day 14 Lab - Mission Answers
-
-## Part 1: Localhost vs Production
-
-### Exercise 1.1: Anti-patterns found
-1. [Your answer]
-2. [Your answer]
-...
-
-### Exercise 1.3: Comparison table
-| Feature | Develop | Production | Why Important? |
-|---------|---------|------------|----------------|
-| Config  | ...     | ...        | ...            |
-...
-
-## Part 2: Docker
-
-### Exercise 2.1: Dockerfile questions
-1. Base image: [Your answer]
-2. Working directory: [Your answer]
-...
-
-### Exercise 2.3: Image size comparison
-- Develop: [X] MB
-- Production: [Y] MB
-- Difference: [Z]%
-
-## Part 3: Cloud Deployment
-
-### Exercise 3.1: Railway deployment
-- URL: https://your-app.railway.app
-- Screenshot: [Link to screenshot in repo]
-
-## Part 4: API Security
-
-### Exercise 4.1-4.3: Test results
-[Paste your test outputs]
-
-### Exercise 4.4: Cost guard implementation
-[Explain your approach]
-
-## Part 5: Scaling & Reliability
-
-### Exercise 5.1-5.5: Implementation notes
-[Your explanations and test results]
-```
+> **Student Name:** Đàm Hồng Thái
+> **Student ID:** 2A202603927
+> **Date:** 26/11/2026
+> **Repository:** [K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability](https://github.com/itsbra1vo/K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability)
+> **Submission status:** Bản nộp đã có nội dung và bằng chứng local; các mục cần deploy cloud, chạy checker trên Linux, và Locust scale 1/3 vẫn đang chờ.
 
 ---
 
-### 2. Full Source Code - Lab 06 Complete (60 points)
+## 1. Mission Answers — Part 1–5 (40 points)
 
-Your final production-ready agent, built from the skeleton in `06-lab-complete/` (xem mục **Hợp đồng** trong [06-lab-complete/README.md](06-lab-complete/README.md)):
+Đã hoàn thiện câu trả lời trong [MISSION_ANSWERS.md](MISSION_ANSWERS.md), gồm:
 
-```
-your-repo/
-├── app/
-│   ├── main.py              # Main application
-│   ├── config.py            # Configuration
-│   ├── auth.py              # Authentication
-│   ├── rate_limiter.py      # Rate limiting (Redis)
-│   ├── cost_guard.py        # Cost protection (Redis)
-│   └── redis_client.py      # Redis connection + health
-├── utils/
-│   └── mock_llm.py          # Mock LLM (provided)
-├── check_production_ready.py  # Grading script (provided, do not modify)
-├── Dockerfile               # Multi-stage build
-├── docker-compose.yml       # Full stack
-├── requirements.txt         # Dependencies
-├── .env.example             # Environment template
-├── .dockerignore            # Docker ignore
-├── railway.toml             # Railway config (or render.yaml)
-└── README.md                # Setup instructions
-```
+- Part 1: anti-patterns, ý nghĩa và bảng so sánh develop/production.
+- Part 2: Dockerfile, cache dependencies, `.dockerignore`, volume và giới hạn số đo image.
+- Part 3: Render/Railway configuration; chưa tạo public deployment nên URL và ảnh deploy còn thiếu.
+- Part 4: kết quả auth/rate limit/cost guard và giải thích bảo vệ API.
+- Part 5: health/readiness, graceful shutdown, Redis/stateless và scaling.
+- Phần AI usage log và kết quả checklist của `check_production_ready.py`.
 
-**Requirements:**
--  **`python check_production_ready.py` báo `PASS 12/12`** (chạy đầy đủ, có Docker) — dán phần "📋 Checklist Deliverable" của output vào `MISSION_ANSWERS.md`
--  All code runs without errors
--  Multi-stage Dockerfile (image < 500 MB)
--  API key authentication
--  Rate limiting (10 req/min)
--  Cost guard ($10/month)
--  Health + readiness checks
--  Graceful shutdown
--  Stateless design (Redis)
--  No hardcoded secrets
+## 2. Full Source Code — Lab 06 Complete (60 points)
 
----
+Mã nguồn hoàn thiện nằm đúng vị trí cho lớp K5: [`06-lab-complete/`](06-lab-complete/). Bao gồm `app/`, `utils/`, `check_production_ready.py` (giữ nguyên script được cung cấp), Dockerfile đa tầng, Compose, requirements, `.env.example`, cấu hình Railway/Render và README.
 
-### 3. Service Domain Link
+Kết quả chạy đầy đủ checker với Docker ngày 2026-11-26:
 
-Create a file `DEPLOYMENT.md` with your deployed service information:
+- **11/12 tiêu chí; 40/40 checks passed; image 160 MB.**
+- Docker stop test graceful shutdown đạt; phép thử SIGTERM trực tiếp không chạy được trong môi trường Windows, nên tổng kết checker vẫn là `CHƯA ĐẠT`, không phải `PASS 12/12`.
+- API key, rate limiting, cost guard, health/readiness, Redis/stateless, logging và image được checker kiểm tra.
+- Muốn xác nhận `PASS 12/12`, cần chạy script không có cờ quick mode trên Linux có Docker.
 
-````markdown
-# Deployment Information
+## 3. Service Domain Link
 
-## Public URL
-https://your-agent.railway.app
+Thông tin triển khai và các lệnh kiểm tra được ghi trong [DEPLOYMENT.md](DEPLOYMENT.md). Root `render.yaml` và cấu hình Railway có mặt, nhưng **chưa triển khai service lên cloud**. Do đó chưa có public URL hoặc kết quả endpoint công khai để ghi nhận.
 
-## Platform
-Railway / Render / Cloud Run
+Kết quả local trong checker: health/readiness hoạt động; API thiếu/sai key trả 401, key hợp lệ trả 200; vượt hạn mức trả 429; hết ngân sách trả 402. Các kết quả local không thay thế kiểm tra URL cloud.
 
-## Test Commands
+Ảnh dashboard deploy, service running và public test chưa có vì chưa tạo deployment. Không dùng ảnh giả hoặc URL mẫu làm bằng chứng.
 
-### Health Check
-```bash
-curl https://your-agent.railway.app/health
-# Expected: {"status": "ok"}
-```
+## 4. Benchmark & Observability — Part 7 (20 points)
 
-### API Test (with authentication)
-```bash
-curl -X POST https://your-agent.railway.app/ask \
-  -H "X-API-Key: YOUR_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"user_id": "test", "question": "Hello"}'
-```
+Báo cáo: [BENCHMARK_REPORT.md](BENCHMARK_REPORT.md). JSON ở [`reports/`](reports/), CSV/trace/alert evidence ở [`benchmark-results/`](benchmark-results/) và ảnh ở [`screenshots/`](screenshots/).
 
-## Environment Variables Set
-- PORT
-- REDIS_URL
-- AGENT_API_KEY
-- LOG_LEVEL
+- Đã đo concurrency 1/10/50/100 và ghi RPS, p50/p95/p99, error rate, SLO; chi tiết từng mức ở báo cáo và JSON.
+- Đã so sánh slow rate 0%, 3%, 10%.
+- Eval golden set 23 câu: v1 **1/23 (4.3%)**, v2 ban đầu **21/23 (91.3%)**, v2 sau bổ sung knowledge **23/23 (100%)**. CI quality gate được đặt ở accuracy tối thiểu 85%.
+- Bổ sung knowledge cho `security-02` và `scaling-03`; histogram `agent_question_length_chars` đã được thêm. Báo cáo nêu cách tránh cardinality cao trong metric labels.
+- Có 4 ảnh Part 7: Grafana dashboard, Jaeger slow trace, Jaeger error trace, Prometheus alert firing.
+- Hai alert đã quan sát firing: `AgentHighLatencyP95` (sau khoảng 2 phút theo cấu hình `for`) và `AgentInstanceDown` (khoảng 35–60 giây sau khi pause instance).
+- Locust có baseline và slow-fault CSV. **Chưa tạo `scale_1_stats.csv` và `scale_3_stats.csv`**, nên không coi đây là kết quả so sánh scale.
 
-## Screenshots
-- [Deployment dashboard](screenshots/dashboard.png)
-- [Service running](screenshots/running.png)
-- [Test results](screenshots/test.png)
-````
+## Pre-Submission Checklist
 
----
+- [ ] Đã xác nhận repository public hoặc cấp quyền cho giảng viên. Remote hiện trỏ tới URL ở trên; visibility chưa được xác nhận trong môi trường này.
+- [x] `MISSION_ANSWERS.md` có câu trả lời Part 1–5, AI log và kết quả checker.
+- [ ] `DEPLOYMENT.md` có public URL hoạt động. Chưa deploy.
+- [x] Source Part 6 ở `06-lab-complete/` theo cấu trúc K5.
+- [x] `06-lab-complete/README.md` có hướng dẫn setup.
+- [x] Không có `.env` được Git theo dõi; `.env.example` là file mẫu. Một `.env` cục bộ đang bị ignore/untracked: không force-add và xóa trước khi tạo archive chia sẻ.
+- [x] Checker xác nhận cấu hình secrets/environment; không ghi secret thật vào báo cáo.
+- [ ] Public URL truy cập được. Chưa deploy.
+- [~] Có ảnh Part 7; còn thiếu ba ảnh deployment (`dashboard.png`, `running.png`, `test.png`).
+- [x] Git history có các commit với nội dung rõ ràng.
+- [ ] Checker `PASS 12/12`. Hiện tại 11/12 do phép thử SIGTERM Windows; cần chạy trên Linux.
+- [~] Báo cáo Part 7 và artifact có mặt; Locust scale-1/scale-3 CSV chưa có.
 
-### 4. Benchmark & Observability Report — Part 7 (20 points)
+> `[x]` hoàn tất; `[~]` có một phần bằng chứng; `[ ]` chưa hoàn tất.
 
-Copy [06-lab-complete/benchmark-observability/BENCHMARK_REPORT_TEMPLATE.md](06-lab-complete/benchmark-observability/BENCHMARK_REPORT_TEMPLATE.md) thành `BENCHMARK_REPORT.md` và điền đầy đủ, kèm các file bằng chứng:
+## Self-Test — Kết quả thực tế
 
-```
-your-repo/
-├── BENCHMARK_REPORT.md
-├── reports/
-│   ├── load_v2_c1.json ... load_v2_c100.json   # load_test.py --out
-│   ├── eval_v1.json
-│   ├── eval_v2.json
-│   └── eval_v2_fixed.json                      # sau khi sửa knowledge base
-├── benchmark-results/
-│   ├── scale_1_stats.csv                       # Locust headless
-│   └── scale_3_stats.csv
-└── screenshots/
-    ├── grafana-dashboard.png
-    ├── jaeger-slow-trace.png
-    ├── jaeger-error-trace.png
-    └── prometheus-alert-firing.png
-```
+### Local checker
 
-**Requirements:**
--  Load test ở 4 mức concurrency, có p50/p95/p99 và đối chiếu SLO
--  Eval v1 vs v2, sửa knowledge base để v2 đạt 100% không regression
--  Dashboard Grafana có tải, 1 trace chậm + 1 trace lỗi trong Jaeger
--  Ít nhất 2 alert firing, ghi lại thời gian phát hiện
--  Số liệu trong report khớp với file JSON/CSV
+Chạy `python check_production_ready.py` tại `06-lab-complete/` với Docker: **11/12 tiêu chí, 40/40 checks passed, image 160 MB**. Lý do còn thiếu một tiêu chí được ghi tại Phần 2 và trong `MISSION_ANSWERS.md`.
 
-> **Cách tính điểm:** tổng thô 120 (40 + 60 + 20), quy đổi về thang 100.
+### API và eval
 
----
+Local Docker checker đã xác nhận các kết quả auth, rate limit, cost guard, health/readiness và stateless restart nêu trên. Eval v2 sau cập nhật knowledge đạt **23/23 (100%)**; CI gate yêu cầu tối thiểu 85%.
 
-##  Pre-Submission Checklist
+### Public endpoint checks
 
-- [ ] Repository is public (or instructor has access)
-- [ ] `MISSION_ANSWERS.md` completed with all exercises
-- [ ] `DEPLOYMENT.md` has working public URL
-- [ ] All source code in `app/` directory
-- [ ] `README.md` has clear setup instructions
-- [ ] No `.env` file committed (only `.env.example`)
-- [ ] No hardcoded secrets in code
-- [ ] Public URL is accessible and working
-- [ ] Screenshots included in `screenshots/` folder
-- [ ] Repository has clear commit history
-- [ ] `python check_production_ready.py` → `PASS 12/12`
-- [ ] `BENCHMARK_REPORT.md` điền đủ, có `reports/`, `benchmark-results/` và screenshot Part 7
+Chưa thể chạy vì chưa có domain cloud. Sau khi deploy, chạy các lệnh PowerShell trong `DEPLOYMENT.md` và điền kết quả thực tế cho `/health`, `/ready`, `/ask` không key và `/ask` có key. Không chụp ảnh có API key.
 
----
+## Submission
 
-##  Self-Test
+Repository URL: <https://github.com/itsbra1vo/K5-L3B-DAY14-DamHongThai-2A202603927-Deployment-Benchmark-Observability>
 
-Before submitting, verify your deployment:
+Nộp link repo này trên LMS sau khi xử lý các mục còn `[ ]` và `[~]` ở checklist trên.
 
-```bash
-# 1. Health check
-curl https://your-app.railway.app/health
+## Remaining work
 
-# 2. Authentication required
-curl https://your-app.railway.app/ask
-# Should return 401
+1. Deploy Render/Railway, xác nhận quyền truy cập repo, ghi URL và kết quả endpoint, chụp ba ảnh deployment.
+2. Chạy `check_production_ready.py` đầy đủ trên Linux có Docker để xác nhận `PASS 12/12`.
+3. Chạy Locust với một và ba replicas để tạo `scale_1_stats.csv` và `scale_3_stats.csv`, rồi bổ sung so sánh vào báo cáo.
 
-# 3. With API key works
-curl -H "X-API-Key: YOUR_KEY" https://your-app.railway.app/ask \
-  -X POST -d '{"user_id":"test","question":"Hello"}'
-# Should return 200
+## Need Help?
 
-# 4. Rate limiting
-for i in {1..15}; do 
-  curl -H "X-API-Key: YOUR_KEY" https://your-app.railway.app/ask \
-    -X POST -d '{"user_id":"test","question":"test"}'; 
-done
-# Should eventually return 429
-
-# 5. Part 7 — eval quality gate (agent v2 đang chạy ở local)
-cd 06-lab-complete/benchmark-observability/develop
-python eval/run_eval.py --min-accuracy 1.0
-# Should print: Quality gate ... ✅ PASS
-```
-
----
-
-##  Submission
-
-**Submit your GitHub repository URL:**
-
-```
-https://github.com/your-username/day14-agent-deployment
-```
-
----
-
-##  Quick Tips
-
-1.  Test your public URL from a different device
-2.  Make sure repository is public or instructor has access
-3.  Include screenshots of working deployment
-4.  Write clear commit messages
-5.  Test all commands in DEPLOYMENT.md work
-6.  No secrets in code or commit history
-
----
-
-##  Need Help?
-
-- Check [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-- Review [CODE_LAB.md](CODE_LAB.md)
-- Ask in office hours
-- Post in discussion forum
-
----
-
-**Good luck! **
+- Xem [TROUBLESHOOTING.md](TROUBLESHOOTING.md) và [CODE_LAB.md](CODE_LAB.md).
+- Quy định và tiêu chí chấm nằm trong [RULES.md](RULES.md) và [RUBRIC.md](RUBRIC.md).
